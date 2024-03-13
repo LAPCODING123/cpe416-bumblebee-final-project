@@ -2,10 +2,6 @@
 
 SharpIR::SharpIR()
 {
-
-    // Define pin as Input
-    pinMode(SHARP_IR_PIN, INPUT);
-    analogReference(DEFAULT);
 }
 
 // Sort an array

@@ -30,19 +30,13 @@ void Robot::setup()
 {
     init_millis(F_CPU);
     init();
+    analogReference(DEFAULT);
+    pinMode(A0, INPUT);
     pinMode(A2, INPUT);
     pinMode(A3, INPUT);
     clear_screen();
     m_drivetrain->setup();
     m_stateManager->switchState(m_tuningMode);
-}
-
-void Robot::run()
-{
-    while (1)
-    {
-        periodic();
-    }
 }
 
 void Robot::periodic()

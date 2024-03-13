@@ -25,7 +25,7 @@ public:
     ~Robot();
 
     void setup();
-    void run();
+    void periodic();
 
 private:
     Drivetrain *m_drivetrain;
@@ -39,7 +39,6 @@ private:
     bool m_buttonPressed;
     bool m_longPressTriggered;
     unsigned long m_buttonPressTime;
-    void periodic();
 
     void when_btn_pressed();
     void when_btn_held();
