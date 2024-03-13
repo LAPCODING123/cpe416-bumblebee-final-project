@@ -1,10 +1,10 @@
 // Global defines
-#include <stdint.h>
-
 #pragma once
 
+#include <stdint.h>
+#include <Arduino.h>
+
 typedef unsigned char u08;
-typedef unsigned int u16;
 
 #define sbi(a, b) (a) |= _BV(b)
 #define cbi(a, b) (a) &= ~_BV(b)
