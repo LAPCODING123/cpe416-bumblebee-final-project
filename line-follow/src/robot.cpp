@@ -33,6 +33,8 @@ void Robot::setup()
     clear_screen();
     m_drivetrain->setup();
     m_stateManager->switchState(m_tuningMode);
+    pinMode(A2, INPUT);
+    pinMode(A3, INPUT);
 }
 
 void Robot::run()
