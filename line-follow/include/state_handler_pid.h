@@ -21,6 +21,7 @@ private:
     PID *m_pidController;
     int m_lastWorkingDir = 1;
     bool m_offTrackMode = false;
+    bool m_detourMode = false;
     unsigned long m_offTrackInitTime = 0;
     unsigned long m_offTrackWaitTime = 100;
 };
