@@ -59,6 +59,7 @@ void TuningMode::periodic()
         int cm = SharpIR::getInstance().distance();
         sprintf(cmstring, "%3d", cm);
         lcd_cursor(0, 1);
+        print_string("     ");
         print_string((const char *)cmstring);
     }
 }
