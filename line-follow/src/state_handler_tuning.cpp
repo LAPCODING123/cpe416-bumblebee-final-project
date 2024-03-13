@@ -20,7 +20,7 @@ void TuningMode::init()
 
 void TuningMode::periodic()
 {
-    int cm = get_dist_sensor_cm();
+    int cm = SharpIR::getInstance().distance();
     sprintf(cmstring, "%3d", cm);
     print_string((const char *)cmstring);
     _delay_ms(1);
