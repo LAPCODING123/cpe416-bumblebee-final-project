@@ -58,7 +58,7 @@ void PIDMode::periodic()
 
         // Set the speed and turn based on the PID controller
         struct MotorCommand speeds;
-        speeds = m_drivetrain->compute_proportional(m_pidController, 15, get_left_IR_raw(), get_right_IR_raw());
+        speeds = m_drivetrain->compute_proportional(m_pidController, 15);
         m_drivetrain->set_speed(speeds);
     }
 }
