@@ -32,7 +32,7 @@ void PIDMode::handleObstaclePeriodic()
         m_drivetrain->set_speed_turn(20.0, -2.5);
 
     }
-    else if(time_diff >= m_correctiveManeuverWaitTime + 950 && time_diff <  m_correctiveManeuverWaitTime + 1200)
+    else if(time_diff >= m_correctiveManeuverWaitTime + 950 && time_diff <  m_correctiveManeuverWaitTime + 1300)
     {
         //turn 90 ccw
         m_drivetrain->set_speed_turn(0.0, 15.0);
@@ -96,7 +96,7 @@ void PIDMode::periodic()
     // If off track, sweep left and right
     int dist_reading = SharpIR::getInstance().distance();
     
-    if(!m_detourMode) m_detourMode = dist_reading <= 13;
+    if(!m_detourMode) m_detourMode = dist_reading <= 16;
 
     if (off_track())
     {

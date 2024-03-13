@@ -6,7 +6,7 @@
 
 Robot::Robot() : m_drivetrain(new Drivetrain(SERVO0_PIN, SERVO1_PIN)),
                  m_button(new ButtonDebouncer(10)),
-                 m_pidController(new PID(27.2, 0.0, 0.0)),
+                 m_pidController(new PID(10.0, 0.0, 0.0)),
                  m_tuningMode(new TuningMode()),
                  m_pidMode(new PIDMode(m_drivetrain, m_pidController)),
                  m_stateManager(new StateManager()),
