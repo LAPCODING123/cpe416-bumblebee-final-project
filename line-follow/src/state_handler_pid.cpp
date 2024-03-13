@@ -1,4 +1,5 @@
 #include "state_handler_pid.h"
+#include "distance_sensor.h"
 
 PIDMode::PIDMode(Drivetrain *drivetrain, PID *pidController) : m_drivetrain(drivetrain), m_pidController(pidController)
 {
@@ -17,6 +18,8 @@ void PIDMode::init()
 
 void PIDMode::periodic()
 {
+    // clear_screen();
+    // print_num(get_dist_sensor_raw());
     int dir = m_lastWorkingDir;
     // If off track, sweep left and right
     if (off_track())

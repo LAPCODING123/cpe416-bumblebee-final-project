@@ -4,18 +4,11 @@
 
 #include "robot.h"
 
-Robot::Robot() : m_dataPts(std::vector<struct TrainingData>()),
-                 m_drivetrain(new Drivetrain(SERVO0_PIN, SERVO1_PIN)),
+Robot::Robot() : m_drivetrain(new Drivetrain(SERVO0_PIN, SERVO1_PIN)),
                  m_button(new ButtonDebouncer(10)),
                  m_pidController(new PID(27.2, 0.0, 0.0)),
-                 m_neuralNetwork(new NeuralNetwork(NEURAL_INPUTS, NEURAL_TOPOLOGY)),
-                 m_temp_neuralNetwork(new NeuralNetwork(NEURAL_INPUTS, NEURAL_TOPOLOGY)),
                  m_tuningMode(new TuningMode()),
                  m_pidMode(new PIDMode(m_drivetrain, m_pidController)),
-                 m_dataCollectMode(new DataCollectMode(m_drivetrain, m_pidController, &m_dataPts)),
-                 m_dataWaitMode(new DataWaitMode(m_drivetrain, m_pidController)),
-                 m_trainingMode(new TrainingMode(m_neuralNetwork, m_temp_neuralNetwork, &m_dataPts, NEURAL_ALPHA)),
-                 m_neuralMode(new NeuralMode(m_drivetrain, m_neuralNetwork)),
                  m_stateManager(new StateManager()),
                  m_buttonPressed(false),
                  m_longPressTriggered(false),
@@ -29,13 +22,7 @@ Robot::~Robot()
     delete m_drivetrain;
     delete m_button;
     delete m_pidController;
-    delete m_neuralNetwork;
-    delete m_tuningMode;
     delete m_pidMode;
-    delete m_dataCollectMode;
-    delete m_dataWaitMode;
-    delete m_trainingMode;
-    delete m_neuralMode;
     delete m_stateManager;
 }
 
@@ -102,19 +89,7 @@ void Robot::when_btn_pressed()
             m_stateManager->switchState(m_pidMode);
             break;
         case PID_MODE:
-            m_stateManager->switchState(m_dataCollectMode);
-            break;
-        case DATA_COLLECT_MODE:
-            m_stateManager->switchState(m_dataWaitMode);
-            break;
-        case DATA_WAIT_MODE:
-            m_stateManager->switchState(m_trainingMode, true);
-            break;
-        case TRAINING_MODE:
-            m_stateManager->switchState(m_neuralMode, true);
-            break;
-        case NEURAL_NETWORK_MODE:
-            m_stateManager->switchState(m_trainingMode, true);
+            m_stateManager->switchState(m_pidMode);
             break;
         default:
             break;

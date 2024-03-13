@@ -4,10 +4,7 @@ enum RobotState
 {
     TUNING_MODE,
     PID_MODE,
-    DATA_COLLECT_MODE,
-    DATA_WAIT_MODE,
-    TRAINING_MODE,
-    NEURAL_NETWORK_MODE
+    DETOUR_MODE
 };
 
 class IRobotState

@@ -1,4 +1,6 @@
 #include "state_handler_tuning.h"
+#include "distance_sensor.h"
+#include <util/delay.h>
 
 TuningMode::TuningMode()
 {
@@ -13,10 +15,19 @@ void TuningMode::init()
 {
     clear_screen();
     print_string("Tuning");
+    clear_screen();
 }
 
 void TuningMode::periodic()
 {
+    print_num((u16)get_dist_sensor_cm());
+    _delay_ms(1);
+    print_string("    ");
+    lcd_cursor(0, 0);
+
+   
+
+
     if (m_editMode)
     {
         switch (m_calibrationState)
