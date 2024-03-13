@@ -309,7 +309,6 @@ void init(void)
    // set i2c pins to outputs for testing
    // DDRE |= _BV(4) | _BV(5);
 
-   init_adc();
    init_lcd();
 #ifndef BOOTLOADER
    init_servo();

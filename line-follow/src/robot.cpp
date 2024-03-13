@@ -30,11 +30,11 @@ void Robot::setup()
 {
     init_millis(F_CPU);
     init();
+    pinMode(A2, INPUT);
+    pinMode(A3, INPUT);
     clear_screen();
     m_drivetrain->setup();
     m_stateManager->switchState(m_tuningMode);
-    pinMode(A2, INPUT);
-    pinMode(A3, INPUT);
 }
 
 void Robot::run()
@@ -91,7 +91,7 @@ void Robot::when_btn_pressed()
             m_stateManager->switchState(m_pidMode);
             break;
         case PID_MODE:
-            m_stateManager->switchState(m_pidMode);
+            m_stateManager->switchState(m_tuningMode);
             break;
         default:
             break;
