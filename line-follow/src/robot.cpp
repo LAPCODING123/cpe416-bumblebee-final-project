@@ -30,10 +30,15 @@ void Robot::setup()
 {
     init_millis(F_CPU);
     init();
+
+    // Analog setup
+    ADCSRA |= _BV(ADEN) | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0);
+    ADMUX |= _BV(ADLAR) | _BV(REFS0);
     analogReference(DEFAULT);
     pinMode(A0, INPUT);
     pinMode(A2, INPUT);
     pinMode(A3, INPUT);
+
     clear_screen();
     m_drivetrain->setup();
     m_stateManager->switchState(m_tuningMode);
