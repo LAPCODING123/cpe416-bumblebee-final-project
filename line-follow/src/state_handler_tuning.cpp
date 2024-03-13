@@ -15,18 +15,10 @@ void TuningMode::init()
 {
     clear_screen();
     print_string("Tuning");
-    clear_screen();
 }
 
 void TuningMode::periodic()
 {
-    int cm = SharpIR::getInstance().distance();
-    sprintf(cmstring, "%3d", cm);
-    print_string((const char *)cmstring);
-    _delay_ms(1);
-    print_string("    ");
-    lcd_cursor(0, 0);
-
     if (m_editMode)
     {
         switch (m_calibrationState)
@@ -60,6 +52,14 @@ void TuningMode::periodic()
         default:
             break;
         }
+    }
+    else
+    {
+        _delay_ms(1);
+        int cm = SharpIR::getInstance().distance();
+        sprintf(cmstring, "%3d", cm);
+        lcd_cursor(1, 0);
+        print_string((const char *)cmstring);
     }
 }
 
