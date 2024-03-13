@@ -15,6 +15,7 @@ public:
     void postPeriodic() override;
     bool btnPressed() override;
     void btnHeld() override;
+    void handleObstaclePeriodic();
 
 private:
     Drivetrain *m_drivetrain;
@@ -22,6 +23,8 @@ private:
     int m_lastWorkingDir = 1;
     bool m_offTrackMode = false;
     bool m_detourMode = false;
+    unsigned long m_correctiveManeuverInitTime = 0;
+    unsigned long m_correctiveManeuverWaitTime = 315;
     unsigned long m_offTrackInitTime = 0;
     unsigned long m_offTrackWaitTime = 100;
 };
