@@ -20,13 +20,10 @@ void TuningMode::init()
 
 void TuningMode::periodic()
 {
-    print_num((u16)get_dist_sensor_cm());
+    print_num((u16)get_dist_sensor_raw());
     _delay_ms(1);
     print_string("    ");
     lcd_cursor(0, 0);
-
-   
-
 
     if (m_editMode)
     {
