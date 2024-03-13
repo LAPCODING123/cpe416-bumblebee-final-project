@@ -20,7 +20,9 @@ void TuningMode::init()
 
 void TuningMode::periodic()
 {
-    print_num((u16)get_dist_sensor_cm());
+    int cm = get_dist_sensor_cm();
+    sprintf(cmstring, "%3d", cm);
+    print_string((const char *)cmstring);
     _delay_ms(1);
     print_string("    ");
     lcd_cursor(0, 0);
