@@ -8,24 +8,14 @@ float analog_to_percent(u08 analog_value)
     return (float)analog_value / 255.0;
 }
 
-float get_left_light_amount()
+int get_left_IR_raw()
 {
-    return analog_to_percent(analog(ANALOG0_PIN));
+    return analogRead(A3);
 }
 
-float get_right_light_amount()
+int get_right_IR_raw()
 {
-    return analog_to_percent(analog(ANALOG1_PIN));
-}
-
-u08 get_left_IR_raw()
-{
-    return analog(ANALOG3_PIN);
-}
-
-u08 get_right_IR_raw()
-{
-    return analog(ANALOG2_PIN);
+    return analogRead(A2);
 }
 
 float get_IR_amount(u08 raw_reading)
@@ -45,12 +35,12 @@ float get_right_IR_amount(u08 right_reading_raw)
 
 float get_left_IR_amount()
 {
-    return get_IR_amount(get_left_IR_raw()); // analog(ANALOG3_PIN);
+    return get_IR_amount(get_left_IR_raw());
 }
 
 float get_right_IR_amount()
 {
-    return get_IR_amount(get_right_IR_raw()); // analog(ANALOG2_PIN);
+    return get_IR_amount(get_right_IR_raw());
 }
 
 float get_left_IR_percent(float left_IR_amount)

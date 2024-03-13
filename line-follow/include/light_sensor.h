@@ -9,10 +9,8 @@
 
 float analog_to_percent(u08 analog_value);
 
-float get_left_light_amount();
-float get_right_light_amount();
-u08 get_left_IR_raw();
-u08 get_right_IR_raw();
+int get_left_IR_raw();
+int get_right_IR_raw();
 float get_IR_amount(u08 raw_reading);
 float get_left_IR_amount(u08 left_reading_raw);
 float get_right_IR_amount(u08 right_reading_raw);
